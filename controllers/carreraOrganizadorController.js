@@ -45,9 +45,8 @@ exports.deleteCarreraOrganizador = async (req, res) => {
             res.status(404).json({msg: 'No existe ese registro'})
         }else{
 
-            carreraOrganizador.forEach(element=>{
-                console.log(element._id.value);
-             CarreraOrganizador.findOneAndRemove({_id: element._id});
+            carreraOrganizador.forEach(async element=>{
+            await CarreraOrganizador.findOneAndRemove(element._id);
             })
 
             res.json({msg:'El registro ha sido eliminado'});

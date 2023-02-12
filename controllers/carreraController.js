@@ -1,4 +1,5 @@
 const Carrera = require("../models/Carrera");
+const CarreraOrganizador = require("../models/CarreraOrganizador");
 
 exports.addCarrera = async (req, res) => {
     
@@ -86,8 +87,9 @@ exports.deleteCarrera = async (req, res) => {
             res.status(404).json({msg: 'No existe la carrera'})
         }else{
             console.log(req.params.id);
-            //await Carrera.findOneAndRemove({_id: req.params.id})
-            //res.json({msg:'La carrera ha sido eliminado'});
+            await Carrera.findOneAndRemove({_id: req.params.id});
+            res.json({msg:'La carrera ha sido eliminado'});
+            await CarreraOrganizador.deleteMany({idCarrera: req.params.id});
         }
 
     } catch (error) {

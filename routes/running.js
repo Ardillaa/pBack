@@ -18,9 +18,8 @@ router.get('/organizador/:id', organizadorController.getOrganizador);
 router.put('/organizador/edit/:id', organizadorController.editOrganizador);
 
 router.post('/carreras/addOrganizadores', carreraOrganizadorController.addCarreraOrganizador);
+router.post('/carreras/del/OrgCarrera', carreraOrganizadorController.deleteCarreraOrganizador);
 router.get('/carreras/organizadores/:idCarrera', carreraOrganizadorController.getOrganizadores);
 router.get('/carreras/organizadores/sin/:idCarrera', carreraOrganizadorController.getOrganizadoresSinAsignar);
-router.delete('/carreras/organizadores/del/', carreraOrganizadorController.deleteCarreraOrganizador);
-
 
 module.exports = router;
