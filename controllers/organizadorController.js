@@ -1,4 +1,6 @@
 const Organizador = require("../models/Organizador");
+const CarreraOrganizador = require("../models/CarreraOrganizador");
+
 
 exports.addOrganizador = async (req, res) => {
     
@@ -86,6 +88,7 @@ exports.deleteOrganizador = async (req, res) => {
         }else{
             await Organizador.findOneAndRemove({_id: req.params.id})
             res.json({msg:'El organizador ha sido eliminado'});
+            await CarreraOrganizador.deleteMany({idOrganizador: req.params.id});
         }
 
     } catch (error) {
