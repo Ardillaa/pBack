@@ -1,4 +1,4 @@
-//Rutas Base de datos
+
 const express = require('express');
 const router = express.Router();
 const organizadorController = require('../controllers/organizadorController');

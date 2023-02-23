@@ -6,14 +6,8 @@ exports.addCarreraOrganizador = async (req, res) => {
     try {
 
         req.body.forEach(element => {
-        
-
                 carreraOrganizador = new CarreraOrganizador(element);
-        
                 carreraOrganizador.save();
-                
-        
-            
         })
         res.send(req.body);
     } catch (error) {
@@ -25,7 +19,6 @@ exports.addCarreraOrganizador = async (req, res) => {
 exports.getCarreraOrganizador = async (req, res) => {
     
     try {
-        
         const carreraOrganizador = await CarreraOrganizador.find();
         res.json(carreraOrganizador);
 
@@ -67,7 +60,6 @@ exports.getOrganizadores = async (req, res) => {
         relacion = await CarreraOrganizador.find({idCarrera: req.params.idCarrera});
         //obtenemos todos los organizadores
         allOrganizadores = await Organizador.find();
-        
         relacion.forEach(element => {
             allOrganizadores.forEach(organizador =>{
                 if(element.idOrganizador == organizador._id){
@@ -76,10 +68,7 @@ exports.getOrganizadores = async (req, res) => {
             });
             
         });
-
-        //const organizadores = await Organizador.find();
         res.json(organizadores);
-
     } catch (error) {
         console.log(error);
         res.status(500).send('Hubo un error en GetOrganizador');
@@ -113,6 +102,6 @@ exports.getOrganizadoresSinAsignar = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        res.status(500).send('Hubo un error en GetOrganizador');
+        res.status(500).send('Hubo un error en getOrganizadoresSinAsignar');
     }
 }
